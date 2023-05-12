@@ -39,29 +39,41 @@ postgresql://USERNAME:PASSWORD@DB_HOST:DB_PORT/DATABASE_NAME
 ### STEP 1 - Download prerequisites
 
 Clone the repository to your computer
+```
 git clone https://github.com/DanyaCt/DjangoAnsibleTerraform
+```
 
 After creating RDS, you must get DATABASE_URL and base64 encode it. Then, paste the result in django-chart/templates/secret.yml on line 8 instead of mine.
 
 ### STEP 2 - Start metric-server and cert-manager
 
 Run these commands:
+```
 kubectl apply -f metric-server.yaml
+```
+```
 kubectl apply -f cert-manager.yml
+```
 
 ### STEP 3 - Run the Helm chart
 
 Run the command:
+```
 helm install django ./django-chart/
+```
 And you will get an error:
 >Error: INSTALLATION FAILED: failed pre-install: warning: Hook pre-install django-chart/templates/lb-ingress-nginx.yml failed: 1 error occurred:
 >       * namespaces "ingress-nginx" not found
 
 Then run the command:
+```
 kubectl create namespace ingress-nginx
+```
 
 After that, run this command:
+```
 helm upgrade django ./django-chart/
+```
 
 You will get the output:
 
