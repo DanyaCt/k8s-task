@@ -1,7 +1,7 @@
 
 image:
   repository: sebtec1212/my-its-django-app
-  tag: "latest"
+  tag: "gunicorn"
 
 domainname: mydjangoapp-its.pp.ua
 
